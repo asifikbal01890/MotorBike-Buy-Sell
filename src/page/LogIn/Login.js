@@ -42,6 +42,7 @@ const Login = () => {
         googleLogIn(googleProvider)
         .then(result => {
             const user = result.user;
+            console.log(user)
             toast('Login Successfully');
             navigate(from, {replace: true});
             
