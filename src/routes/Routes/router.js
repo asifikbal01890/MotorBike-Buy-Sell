@@ -2,6 +2,8 @@ import React from 'react';
 import { createBrowserRouter } from 'react-router-dom';
 import Main from '../../layout/Main/Main';
 import Home from '../../page/Home/Home/Home';
+import Login from '../../page/LogIn/Login';
+import SignUp from '../../page/SignUp/SignUp';
 
 
 
@@ -28,14 +30,14 @@ import Home from '../../page/Home/Home/Home';
             //         path: "/contactUs",
             //         element: <ContactUs></ContactUs>
             //     },
-            //     {
-            //         path: "/login",
-            //         element: <Login></Login>
-            //     },
-            //     {
-            //         path: "/signUp",
-            //         element: <SignUp></SignUp>
-            //     },
+                {
+                    path: "/login",
+                    element: <Login></Login>
+                },
+                {
+                    path: "/signUp",
+                    element: <SignUp></SignUp>
+                },
             ]
         }
     ])
