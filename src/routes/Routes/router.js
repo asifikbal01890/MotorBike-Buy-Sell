@@ -4,6 +4,7 @@ import Main from '../../layout/Main/Main';
 import Blog from '../../page/Blog/Blog';
 import Home from '../../page/Home/Home/Home';
 import Login from '../../page/LogIn/Login';
+import PageNotFound from '../../page/PageNotFound/PageNotFound';
 import SignUp from '../../page/SignUp/SignUp';
 
 
@@ -40,6 +41,10 @@ import SignUp from '../../page/SignUp/SignUp';
                     element: <SignUp></SignUp>
                 },
             ]
+        },
+        {
+            path: "*",
+            element: <PageNotFound></PageNotFound>
         }
     ])
 
