@@ -4,7 +4,11 @@ import DashBoardLayout from '../../layout/DashBoardLayout/DashBoardLayout';
 import Main from '../../layout/Main/Main';
 import BikesCollection from '../../page/BikesCollection/BikesCollection';
 import Blog from '../../page/Blog/Blog';
-import DashBoard from '../../page/DashBoard/DashBoard';
+import AddAProduct from '../../page/DashBoard/AddAProduct/AddAProduct';
+import AllBuyers from '../../page/DashBoard/AllBuyers/AllBuyers';
+import AllSellers from '../../page/DashBoard/AllSellers/AllSellers';
+import MyOrders from '../../page/DashBoard/MyOrders/MyOrders';
+import MyProduct from '../../page/DashBoard/MyProduct/MyProduct';
 import Home from '../../page/Home/Home/Home';
 import Login from '../../page/LogIn/Login';
 import PageNotFound from '../../page/PageNotFound/PageNotFound';
@@ -48,8 +52,24 @@ import PrivateRoute from '../PrivateRoute/PrivateRoute';
             element: <PrivateRoute><DashBoardLayout></DashBoardLayout></PrivateRoute>,
             children:[
                 {
-                    path: "/dashboard",
-                    element:<DashBoard></DashBoard>
+                    path: "/dashboard/addproduct",
+                    element:<AddAProduct></AddAProduct>
+                },
+                {
+                    path: "/dashboard/myproduct",
+                    element:<MyProduct></MyProduct>
+                },
+                {
+                    path: "/dashboard/allsellers",
+                    element:<AllSellers></AllSellers>
+                },
+                {
+                    path: "/dashboard/allbuyers",
+                    element:<AllBuyers></AllBuyers>
+                },
+                {
+                    path: "/dashboard/myorders",
+                    element:<MyOrders></MyOrders>
                 }
             ]
         },
