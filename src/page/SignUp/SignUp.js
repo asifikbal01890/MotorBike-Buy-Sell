@@ -6,12 +6,14 @@ import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthProvider';
 import useToken from '../../Hooks/useToken';
 
+
 const SignUp = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
 
     const { createUser, googleLogIn, updateUser } = useContext(AuthContext);
     const [signUpError, setSingUpError] = useState('');
     const [createdUserEmail, setCreatedUserEmail] = useState('');
+    const [btnState, setBtnState] = useState(false);
     const [token] = useToken(createdUserEmail);
     const navigate = useNavigate();
     if (token) {
@@ -19,6 +21,7 @@ const SignUp = () => {
     }
 
     const handleSignUp = data => {
+        console.log(data);
         setSingUpError('')
         createUser(data.email, data.password)
             .then(result => {
@@ -30,7 +33,7 @@ const SignUp = () => {
                 }
                 updateUser(userInfo)
                     .then(() => {
-                        saveUser(data.name, data.email);
+                        saveUser(data.name, data.email, data.role);
                     })
                     .catch(err => setSingUpError(err));
             })
@@ -44,18 +47,18 @@ const SignUp = () => {
         googleLogIn(googleProvider)
             .then(result => {
                 const user = result.user;
-                saveUser(user.displayName, user.email);
+                const role = false;
+                saveUser(user.displayName, user.email, role);
                 console.log(user)
                 toast('Sign Up Successfully');
-                navigate('/');
             })
             .catch(e => setSingUpError(e.message));
     }
 
-    const saveUser = (name, email) => {
-        const user = { name, email };
+    const saveUser = (name, email, role) => {
+        const user = { name, email, role };
         fetch('http://localhost:5000/users', {
-            method: 'POST',
+            method: 'PUT',
             headers: {
                 'content-type': 'application/json'
             },
@@ -64,9 +67,19 @@ const SignUp = () => {
             .then(res => res.json())
             .then(data => {
                 setCreatedUserEmail(email);
+                navigate('/');
             })
     }
 
+
+
+    
+
+    const handleBtnClick = () => {
+        setBtnState(btnState => !btnState);
+    }
+
+    const btnToggle = btnState ? 'Seller Mood' : 'Buyer Mood';     
 
     return (
         <div>
@@ -99,11 +112,19 @@ const SignUp = () => {
 
                             })} type="password" className="input input-bordered w-full" />
                             {errors.password && <p role="alert" className='text-red-700 '>{errors.password?.message}</p>}
-                            <p className='text-[10px] pt-[2px]'>Forgot Password?</p>
+
+                            <div className="form-control w-full">
+                                <label className="cursor-pointer label">
+                                <span className="label-text font-medium">{btnToggle}</span>
+                                    <input onClick={handleBtnClick} type="checkbox" className="toggle toggle-accent" {...register("role")}/>
+                                </label>
+                            </div>
+
                         </div>
 
-                        <input className='btn btn-primary w-full mt-4' value="Sign Up" type="submit" />
+                        <input className='btn btn-primary w-full' value="Sign Up" type="submit" />
                         {signUpError && <p className='text-red-700 '>{signUpError}</p>}
+
                     </form>
                     <p className='text-xs mt-2.5 mb-4'>Already Have a Account? <Link className='text-primary' to={'/login'}>Please Login</Link> </p>
                     <div className="divider">OR</div>
