@@ -50,7 +50,7 @@ const BookingModal = ({product, setProduct}) => {
             <input type="checkbox" id="Book-Modal" className="modal-toggle" />
             <div className="modal">
                 <div className="modal-box">
-                    <h1 className='text-xl font-semibold text accent'>Book {product?.name}</h1>
+                    <h1 className='text-xl font-semibold text accent'>Booking</h1>
                     <form onSubmit={handleBooking}>
                         <input name='name' type="text" disabled value={product?.name} className="input input-bordered w-full my-6" />
                         <input name='price' type="text" disabled value={product?.resalePrice} className="input input-bordered w-full"/>

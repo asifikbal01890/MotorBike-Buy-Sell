@@ -1,5 +1,6 @@
 import React from 'react';
 import { createBrowserRouter } from 'react-router-dom';
+import DashBoardLayout from '../../layout/DashBoardLayout/DashBoardLayout';
 import Main from '../../layout/Main/Main';
 import BikesCollection from '../../page/BikesCollection/BikesCollection';
 import Blog from '../../page/Blog/Blog';
@@ -43,7 +44,13 @@ import SignUp from '../../page/SignUp/SignUp';
         },
         {
             path: "/dashboard",
-            element: <DashBoard></DashBoard>
+            element: <DashBoardLayout></DashBoardLayout>,
+            children:[
+                {
+                    path: "/dashboard",
+                    element:<DashBoard></DashBoard>
+                }
+            ]
         },
         {
             path: "*",

@@ -44,6 +44,7 @@ const SignUp = () => {
         googleLogIn(googleProvider)
             .then(result => {
                 const user = result.user;
+                saveUser(user.displayName, user.email);
                 console.log(user)
                 toast('Sign Up Successfully');
                 navigate('/');
