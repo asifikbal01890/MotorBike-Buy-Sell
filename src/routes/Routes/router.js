@@ -1,6 +1,8 @@
 import React from 'react';
+import { FaThemeco } from 'react-icons/fa';
 import { createBrowserRouter } from 'react-router-dom';
 import Main from '../../layout/Main/Main';
+import BikeCollection from '../../page/BikesCollection/BikeCollection';
 import Blog from '../../page/Blog/Blog';
 import Home from '../../page/Home/Home/Home';
 import Login from '../../page/LogIn/Login';
@@ -24,14 +26,6 @@ import SignUp from '../../page/SignUp/SignUp';
                     path: "/blog",
                     element: <Blog></Blog>
                 },
-            //     {
-            //         path: "/appointment",
-            //         element: <Appointment></Appointment>
-            //     },
-            //     {
-            //         path: "/contactUs",
-            //         element: <ContactUs></ContactUs>
-            //     },
                 {
                     path: "/login",
                     element: <Login></Login>
@@ -40,6 +34,11 @@ import SignUp from '../../page/SignUp/SignUp';
                     path: "/signUp",
                     element: <SignUp></SignUp>
                 },
+                {
+                    path: "/categories/:id",
+                    loader: ({params}) => fetch(`http://localhost:5000/categories/${params.id}`),
+                    element:<BikeCollection></BikeCollection>
+                }
             ]
         },
         {

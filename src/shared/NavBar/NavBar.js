@@ -13,7 +13,6 @@ const NavBar = () => {
     }
     const menuContent = <React.Fragment>
         <li className='transition-colors ease-in-out hover:text-primary duration-300'><Link to="/">Home</Link></li>
-        <li className='transition-colors ease-in-out hover:text-primary duration-300'><Link to="/about">About</Link></li>
         <li className='transition-colors ease-in-out hover:text-primary duration-300'><Link to="/dashboard">Dashboard</Link></li>
         <li className='transition-colors ease-in-out hover:text-primary duration-300'><Link to="/blog">Blog</Link></li>
         <li className='transition-colors ease-in-out hover:text-primary duration-300'><Link to="/contactUs">Contact Us</Link></li>
