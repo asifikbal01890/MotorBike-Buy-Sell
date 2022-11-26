@@ -9,6 +9,7 @@ import Home from '../../page/Home/Home/Home';
 import Login from '../../page/LogIn/Login';
 import PageNotFound from '../../page/PageNotFound/PageNotFound';
 import SignUp from '../../page/SignUp/SignUp';
+import PrivateRoute from '../PrivateRoute/PrivateRoute';
 
 
 
@@ -38,13 +39,13 @@ import SignUp from '../../page/SignUp/SignUp';
                 {
                     path: "/categories/:id",
                     loader: ({params}) => fetch(`http://localhost:5000/categories/${params.id}`),
-                    element:<BikesCollection></BikesCollection>
+                    element:<PrivateRoute><BikesCollection></BikesCollection></PrivateRoute>
                 }
             ]
         },
         {
             path: "/dashboard",
-            element: <DashBoardLayout></DashBoardLayout>,
+            element: <PrivateRoute><DashBoardLayout></DashBoardLayout></PrivateRoute>,
             children:[
                 {
                     path: "/dashboard",
