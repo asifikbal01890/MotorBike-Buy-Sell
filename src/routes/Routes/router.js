@@ -1,6 +1,7 @@
 import React from 'react';
 import { createBrowserRouter } from 'react-router-dom';
 import Main from '../../layout/Main/Main';
+import Blog from '../../page/Blog/Blog';
 import Home from '../../page/Home/Home/Home';
 import Login from '../../page/LogIn/Login';
 import SignUp from '../../page/SignUp/SignUp';
@@ -18,10 +19,10 @@ import SignUp from '../../page/SignUp/SignUp';
                     path: "/",
                     element: <Home></Home>
                 },
-            //     {
-            //         path: "/about",
-            //         element: <About></About>
-            //     },
+                {
+                    path: "/blog",
+                    element: <Blog></Blog>
+                },
             //     {
             //         path: "/appointment",
             //         element: <Appointment></Appointment>
