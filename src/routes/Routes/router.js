@@ -8,7 +8,7 @@ import AddAProduct from '../../page/DashBoard/AddAProduct/AddAProduct';
 import AllBuyers from '../../page/DashBoard/AllBuyers/AllBuyers';
 import AllSellers from '../../page/DashBoard/AllSellers/AllSellers';
 import MyOrders from '../../page/DashBoard/MyOrders/MyOrders';
-import MyProduct from '../../page/DashBoard/MyProduct/MyProduct';
+import MyProducts from '../../page/DashBoard/MyProduct/MyProducts';
 import Home from '../../page/Home/Home/Home';
 import Login from '../../page/LogIn/Login';
 import PageNotFound from '../../page/PageNotFound/PageNotFound';
@@ -58,7 +58,7 @@ import PrivateRoute from '../PrivateRoute/PrivateRoute';
                 },
                 {
                     path: "/dashboard/myproduct",
-                    element:<MyProduct></MyProduct>
+                    element:<MyProducts></MyProducts>
                 },
                 {
                     path: "/dashboard/allsellers",

@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link, Outlet } from 'react-router-dom';
+import { AuthContext } from '../../Contexts/AuthProvider';
+import useAdmin from '../../Hooks/useAdmin';
 import NavBar from '../../shared/NavBar/NavBar';
 
 const DashBoardLayout = () => {
+
     return (
         <div>
             <NavBar></NavBar>

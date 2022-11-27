@@ -67,7 +67,6 @@ const SignUp = () => {
             .then(res => res.json())
             .then(data => {
                 setCreatedUserEmail(email);
-                navigate('/');
             })
     }
 
