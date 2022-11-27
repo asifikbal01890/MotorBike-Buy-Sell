@@ -1,4 +1,6 @@
+import { format } from 'date-fns';
 import React, { useContext } from 'react';
+import toast from 'react-hot-toast';
 import { useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../../Contexts/AuthProvider';
 
@@ -6,6 +8,8 @@ const AddAProduct = () => {
     const { user } = useContext(AuthContext);
     const datas = useLoaderData();
     console.log(datas)
+    const time = format(new Date(), "p");
+    console.log(time)
 
     const handleAdded = event =>{
         event.preventDefault();
@@ -24,7 +28,7 @@ const AddAProduct = () => {
         const email = form.email.value;
 
         const info = {
-            category,
+            id:category,
             name, 
             picture, 
             location, 
@@ -35,11 +39,30 @@ const AddAProduct = () => {
             email, 
             description, 
             use, 
-            condition
+            condition,
+            time
         }
-        console.log(info);
+        fetch('http://localhost:5000/bikes', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(info)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.acknowledged) {
+                    toast.success('Added Confirmed');
+                    form.reset()
+                }
+                else{
+                    toast.error(data.message);
+                }
+            })
+      
     }
-    // name, picture, location, resalePrice, originalPrice, time, sellerName, description, use, condition
+    
     return (
         <div className='mt-12 w-1/2'>
             <div>
@@ -53,7 +76,10 @@ const AddAProduct = () => {
                     </label>
                     <select name='category' className="select select-bordered">
                         {
-                            datas.map(data => <option>{data.name}</option>)
+                            datas.map(data => <option
+                            value={data._id}
+                            key={data._id}
+                            >{data.name}</option>)
                         }
                     </select>
                 </div>
@@ -74,7 +100,7 @@ const AddAProduct = () => {
                     </label>
                     <textarea name='description' className="textarea textarea-bordered h-24" placeholder="Text Here" required></textarea>
                 </div>
-                <input name='picture' type="file" className="file-input file-input-bordered w-full my-6" required/>
+                <input name='picture' type="text" placeholder="Image Url" className="input input-bordered w-full my-6" required/>
                 <input name='name' type="text" placeholder="Your Bike Name" className="input input-bordered w-full" required />
                 <input name='resalePrice' type="text" placeholder="Resale Price" className="input input-bordered w-full my-6" required />
                 <input name='originalPrice' type="text" placeholder="Original Price" className="input input-bordered w-full " required />
