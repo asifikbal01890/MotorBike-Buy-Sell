@@ -1,4 +1,3 @@
-import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
@@ -9,7 +8,7 @@ import useToken from '../../Hooks/useToken';
 
 const Login = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
-    const {logIn , googleLogIn} = useContext(AuthContext);
+    const {logIn } = useContext(AuthContext);
     const [loginError, setLoginError] = useState('');
     const [loginUserEmail, setLoginUserEmail] = useState('');
     const [token] = useToken(loginUserEmail);
@@ -35,20 +34,6 @@ const Login = () => {
         });
     }
 
-    const googleProvider = new GoogleAuthProvider();
-
-    const handleGoogleLogIn = () =>{
-        setLoginError('');
-        googleLogIn(googleProvider)
-        .then(result => {
-            const user = result.user;
-            console.log(user)
-            toast('Login Successfully');
-            navigate(from, {replace: true});
-            
-        })
-        .catch(e => setLoginError(e.message));
-    }
     return (
         <div className='flex justify-center items-center h-[900px] '>
             <div className='shadow-md w-[385px] px-7 rounded-2xl'>
@@ -78,9 +63,7 @@ const Login = () => {
                 <input className='btn btn-primary w-full mt-4' value="Login" type="submit" />
                 {loginError && <p className='text-red-700 '>{loginError}</p>}
             </form>
-            <p className='text-xs mt-2.5 mb-4'>New to Doctors Portal? <Link className='text-primary' to={'/signUp'}>Create new account</Link> </p>
-            <div className="divider">OR</div>
-            <button onClick={handleGoogleLogIn} className="btn btn-outline btn-primary w-full mb-6">CONTINUE WITH GOOGLE</button>
+            <p className='text-xs mt-2.5 mb-7'>New to Doctors Portal? <Link className='text-primary' to={'/signUp'}>Create new account</Link> </p>
           </div>
         </div>
     );
