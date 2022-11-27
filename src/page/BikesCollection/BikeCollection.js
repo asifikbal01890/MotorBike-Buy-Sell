@@ -8,8 +8,8 @@ const BikeCollection = ({ bike, setProduct }) => {
             <div className="hero shadow-lg rounded-2xl">
                 <div className="hero-content flex-col lg:flex-row">
                     <img src={picture} alt="" className="md:w-1/2" />
-                    <div>
-                        <h1 className="text-2xl font-bold text-accent  lg:text-start">{name}</h1>
+                    <div className='w-full'>
+                        <h1 className="text-2xl font-bold text-accent lg:text-start">{name}</h1>
                         <div className='flex items-center justify-between'>
                             <div>
                                 <h3 className='font-semibold text-lg'>{sellerName}</h3>

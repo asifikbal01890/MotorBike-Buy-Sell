@@ -55,7 +55,7 @@ import SellerRoute from '../SellerRoute/SellerRoute';
             element: <PrivateRoute><DashBoardLayout></DashBoardLayout></PrivateRoute>,
             children:[
                 {
-                    path: "/dashboard/addproduct",
+                    path: "/dashboard",
                     loader: () => fetch("http://localhost:5000/categories"),
                     element:<SellerRoute><AddAProduct></AddAProduct></SellerRoute>
                 },
@@ -64,7 +64,7 @@ import SellerRoute from '../SellerRoute/SellerRoute';
                     element:<SellerRoute><MyProducts></MyProducts></SellerRoute>
                 },
                 {
-                    path: "/dashboard/allsellers",
+                    path: "/dashboard",
                     element:<AdminRoute><AllSellers></AllSellers></AdminRoute>
                 },
                 {
@@ -72,7 +72,7 @@ import SellerRoute from '../SellerRoute/SellerRoute';
                     element:<AdminRoute><AllBuyers></AllBuyers></AdminRoute>
                 },
                 {
-                    path: "/dashboard/myorders",
+                    path: "/dashboard",
                     element:<BuyerRoute><MyOrders></MyOrders></BuyerRoute>
                 }
             ]
