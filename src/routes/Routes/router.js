@@ -13,7 +13,9 @@ import Home from '../../page/Home/Home/Home';
 import Login from '../../page/LogIn/Login';
 import PageNotFound from '../../page/PageNotFound/PageNotFound';
 import SignUp from '../../page/SignUp/SignUp';
+import AdminRoute from '../AdminRoute/AdminRoute';
 import PrivateRoute from '../PrivateRoute/PrivateRoute';
+import SellerRoute from '../SellerRoute/SellerRoute';
 
 
 
@@ -54,19 +56,19 @@ import PrivateRoute from '../PrivateRoute/PrivateRoute';
                 {
                     path: "/dashboard/addproduct",
                     loader: () => fetch("http://localhost:5000/categories"),
-                    element:<AddAProduct></AddAProduct>
+                    element:<SellerRoute><AddAProduct></AddAProduct></SellerRoute>
                 },
                 {
                     path: "/dashboard/myproduct",
-                    element:<MyProducts></MyProducts>
+                    element:<SellerRoute><MyProducts></MyProducts></SellerRoute>
                 },
                 {
                     path: "/dashboard/allsellers",
-                    element:<AllSellers></AllSellers>
+                    element:<AdminRoute><AllSellers></AllSellers></AdminRoute>
                 },
                 {
                     path: "/dashboard/allbuyers",
-                    element:<AllBuyers></AllBuyers>
+                    element:<AdminRoute><AllBuyers></AllBuyers></AdminRoute>
                 },
                 {
                     path: "/dashboard/myorders",
