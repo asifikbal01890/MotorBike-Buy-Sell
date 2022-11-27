@@ -1,31 +1,36 @@
 import React from 'react';
-import {  FaMapMarkerAlt } from 'react-icons/fa';
+import { FaMapMarkerAlt } from 'react-icons/fa';
 
 const BikeCollection = ({ bike, setProduct }) => {
-    const { name, picture, location, resalePrice, originalPrice, time, sellerName } = bike;
+    const { name, picture, location, resalePrice, originalPrice, time, sellerName, description, use, condition } = bike;
     return (
         <div>
-            <div className="hero rounded-xl shadow-lg">
-                <div className="hero-content flex-col ">
-                    <img src={picture} alt='' className="rounded-lg h-48" />
-                    <div className=''>
-                        <h1 className="text-3xl font-bold">{name}</h1>
-                        <div>
-                            <h3 className='font-semibold text-lg text-center'>{sellerName}</h3>
-                            <div className='flex items-center justify-center'>
-                            <FaMapMarkerAlt className='text-primary'></FaMapMarkerAlt>
-                            <p className='pl-2'>{location}</p>
+            <div className="hero shadow-lg rounded-2xl">
+                <div className="hero-content flex-col lg:flex-row">
+                    <img src={picture} alt="" className="md:w-1/2" />
+                    <div>
+                        <h1 className="text-2xl font-bold text-accent  lg:text-start">{name}</h1>
+                        <div className='flex items-center justify-between'>
+                            <div>
+                                <h3 className='font-semibold text-lg'>{sellerName}</h3>
+                                <div className='flex items-center'>
+                                    <FaMapMarkerAlt className='text-primary'></FaMapMarkerAlt>
+                                    <p className='pl-2'>{location}</p>
+                                </div>
+                                <h4>Post at {time}</h4>
+                            </div>
+                            <div>
+                                <h4 className='font-semibold'>Use Only {use}</h4>
+                                <p className='pt-3'>Bike Condition: <span className='font-semibold text-secondary'>{condition}</span></p>
                             </div>
                         </div>
-                        <div className='text-center font-semibold'>
-                        <p>Original Price Tk.{originalPrice}</p>
-                        <p>Resale Price Tk.{resalePrice}</p>
+                        <p className="py-3">{description}</p>
+                        <div className='flex items-center justify-between font-semibold'>
+                            <p className=''>Original Price: {originalPrice} BDT</p>
+                            <p>Resale Price: {resalePrice} BDT</p>
                         </div>
-                        <p className='text-center text-slate-400'>Post at {time}</p>
-                        <div className='flex justify-center mt-4'>
-                        <label htmlFor="Book-Modal" className="btn btn-primary flex" onClick={ () => setProduct(bike)}>Book Now</label>
-                     
-                        
+                        <div className='flex justify-center lg:justify-start'>
+                        <label htmlFor="booking-modal" className="btn btn-primary flex" onClick={ () => setProduct(bike)}>Book Now</label>
                         </div>
                     </div>
                 </div>

@@ -53,6 +53,7 @@ import PrivateRoute from '../PrivateRoute/PrivateRoute';
             children:[
                 {
                     path: "/dashboard/addproduct",
+                    loader: () => fetch("http://localhost:5000/categories"),
                     element:<AddAProduct></AddAProduct>
                 },
                 {

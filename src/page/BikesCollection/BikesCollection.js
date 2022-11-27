@@ -8,7 +8,6 @@ const BikesCollection = () => {
     const [product, setProduct] = useState(null);
     const data = useLoaderData();
     const id = data._id;
-    console.log(id);
 
     const {data:bikes = []} = useQuery({
         queryKey: ['bikes', id],
@@ -21,7 +20,7 @@ const BikesCollection = () => {
     return (
         <div className='my-16'>
             <h1 className='text-center text-2xl text-accent font-bold'>{data.name}</h1>
-            <div className='mt-6 grid gap-9 grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
+            <div className='mt-6 grid gap-9'>
                 {
                     bikes.map(bike => <BikeCollection
                         key={bike._id}

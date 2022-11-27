@@ -3,7 +3,6 @@ import toast from 'react-hot-toast';
 import { AuthContext } from '../../Contexts/AuthProvider';
 
 const BookingModal = ({product, setProduct}) => {
-    console.log(product?.name);
     const {user} = useContext(AuthContext);
 
     const handleBooking = event => {
@@ -46,10 +45,10 @@ const BookingModal = ({product, setProduct}) => {
 
     return (
         <div>
-            {/* Put this part before </body> tag */}
-            <input type="checkbox" id="Book-Modal" className="modal-toggle" />
+            <input type="checkbox" id="booking-modal" className="modal-toggle" />
             <div className="modal">
-                <div className="modal-box">
+                <div className="modal-box relative">
+                    <label htmlFor="booking-modal" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
                     <h1 className='text-xl font-semibold text accent'>Booking</h1>
                     <form onSubmit={handleBooking}>
                         <input name='name' type="text" disabled value={product?.name} className="input input-bordered w-full my-6" />
@@ -58,7 +57,7 @@ const BookingModal = ({product, setProduct}) => {
                         <input name='phone' type="number" placeholder="Your Phone Number" className="input input-bordered w-full" required />
                         <input name='location' type="text" placeholder="Meet Location" className="input input-bordered w-full my-6" required />
                         <input name='email' type="email" disabled value={user?.email} className="input input-bordered w-full" />
-                        <button className="btn btn-primary w-full my-6">SUBMIT</button>
+                        <button htmlFor="Book-Modal" className="btn btn-primary w-full my-6">SUBMIT</button>
                     </form>
                 </div>
             </div>
