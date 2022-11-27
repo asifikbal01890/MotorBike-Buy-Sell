@@ -4,6 +4,7 @@ import { AuthContext } from '../../Contexts/AuthProvider';
 import useAdmin from '../../Hooks/useAdmin';
 import useBuyer from '../../Hooks/useBuyer';
 import useSeller from '../../Hooks/useSeller';
+import Footer from '../../shared/Footer/Footer';
 import NavBar from '../../shared/NavBar/NavBar';
 
 const DashBoardLayout = () => {
@@ -12,16 +13,16 @@ const DashBoardLayout = () => {
     const [isSeller] = useSeller(user?.email);
     const [isBuyer] = useBuyer(user?.email);
     return (
-        <div>
+        <div className=''>
             <NavBar></NavBar>
-            <div className="drawer drawer-mobile">
+            <div className="drawer drawer-mobile max-w-[1440px] mx-auto">
                 <input id="dashboard-drawer" type="checkbox" className="drawer-toggle" />
-                <div className="drawer-content">
+                <div className="drawer-content ml-6">
                     <Outlet></Outlet>
                 </div>
                 <div className="drawer-side">
                     <label htmlFor="dashboard-drawer" className="drawer-overlay"></label>
-                    <ul className="menu p-4 w-80 bg-base-100 text-base-content">
+                    <ul className="menu p-4 w-80 bg-slate-100 text-base-content font-semibold text-lg ">
 
                         {
                             isSeller && <>
@@ -44,6 +45,7 @@ const DashBoardLayout = () => {
                     </ul>
                 </div>
             </div>
+            <Footer></Footer>
         </div>
     );
 };

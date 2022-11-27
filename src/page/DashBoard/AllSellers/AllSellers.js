@@ -1,9 +1,10 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
+import toast from 'react-hot-toast';
 import { FaCheck } from 'react-icons/fa';
 
 const AllSellers = () => {
-    const { data: sellers = [] } = useQuery({
+    const { data: sellers = [], refetch } = useQuery({
         queryKey: ['sellers'],
         queryFn: async () => {
             const res = await fetch("http://localhost:5000/users/seller");
@@ -11,6 +12,30 @@ const AllSellers = () => {
             return data;
         }
     })
+
+    const handleVerify = id => {
+        fetch(`http://localhost:5000/users/seller/${id}`, {
+            method: 'PUT',
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.modifiedCount > 0) {
+                    toast.success('verified successful.')
+                    refetch();
+                }
+            })
+    }
+
+    const handleDeleteSeller = id => {
+        fetch(`http://localhost:5000/users/${id}`, {
+            method: 'DELETE',
+        })
+            .then(res => res.json())
+            .then(data => {
+                toast.success('Delete successful.')
+                refetch();
+            })
+    }
     return (
         <div className='mt-12'>
             <div className="overflow-x-auto">
@@ -33,16 +58,25 @@ const AllSellers = () => {
                                     <td>{seller.name}</td>
                                     <td>{seller.email}</td>
                                     <td>
-                                        <button className='btn btn-circle btn-outline btn-success'>
-                                            <FaCheck className='h-5 w-5'></FaCheck>
-                                        </button>
+                                        {
+                                            seller.verify ?
+                                                <>
+                                                <p className='text-success font-semibold'>{seller.verify}</p>
+                                                </>
+                                                :
+                                                <>
+                                                    <button onClick={() => handleVerify(seller._id)} className='btn btn-circle btn-outline btn-primary'>
+                                                        <FaCheck className='h-5 w-5'></FaCheck>
+                                                    </button>
+                                                </>
+                                        }
                                     </td>
                                     <td>
-                                        <button className="btn btn-circle btn-outline btn-secondary">
+                                        <button onClick={() => handleDeleteSeller(seller._id)} className="btn btn-circle btn-outline btn-secondary">
                                             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" /></svg>
                                         </button>
                                     </td>
-                                    
+
                                 </tr>
                             )
                         }

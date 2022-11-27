@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 
 const Footer = () => {
     return (
-        <footer>
-            <div className="footer p-10 bg-accent text-white">
+        <footer className='bg-accent'>
+            <div className="footer p-10 text-white max-w-[1440px] mx-auto px-5">
             <div>
                 <Link to="/" className="normal-case text-xl font-bold text-white"><span className='text-primary'>MOTOR</span>CYCLES</Link>
                 <p>ACME Industries Ltd.<br />Providing reliable tech since 1992</p>
