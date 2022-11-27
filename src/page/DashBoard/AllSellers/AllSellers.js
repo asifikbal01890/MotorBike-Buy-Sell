@@ -1,9 +1,54 @@
+import { useQuery } from '@tanstack/react-query';
 import React from 'react';
+import { FaCheck } from 'react-icons/fa';
 
 const AllSellers = () => {
+    const { data: sellers = [] } = useQuery({
+        queryKey: ['sellers'],
+        queryFn: async () => {
+            const res = await fetch("http://localhost:5000/users/seller");
+            const data = await res.json();
+            return data;
+        }
+    })
     return (
-        <div>
-            nye
+        <div className='mt-12'>
+            <div className="overflow-x-auto">
+                <table className="table w-full">
+
+                    <thead>
+                        <tr>
+                            <th>No.</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Verify</th>
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {
+                            sellers.map((seller, i) =>
+                                <tr key={seller._id}>
+                                    <th>{i + 1}</th>
+                                    <td>{seller.name}</td>
+                                    <td>{seller.email}</td>
+                                    <td>
+                                        <button className='btn btn-circle btn-outline btn-success'>
+                                            <FaCheck className='h-5 w-5'></FaCheck>
+                                        </button>
+                                    </td>
+                                    <td>
+                                        <button className="btn btn-circle btn-outline btn-secondary">
+                                            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" /></svg>
+                                        </button>
+                                    </td>
+                                    
+                                </tr>
+                            )
+                        }
+                    </tbody>
+                </table>
+            </div>
         </div>
     );
 };
