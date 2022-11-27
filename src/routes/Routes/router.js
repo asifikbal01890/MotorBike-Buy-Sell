@@ -14,6 +14,7 @@ import Login from '../../page/LogIn/Login';
 import PageNotFound from '../../page/PageNotFound/PageNotFound';
 import SignUp from '../../page/SignUp/SignUp';
 import AdminRoute from '../AdminRoute/AdminRoute';
+import BuyerRoute from '../BuyerRoute/BuyerRoute';
 import PrivateRoute from '../PrivateRoute/PrivateRoute';
 import SellerRoute from '../SellerRoute/SellerRoute';
 
@@ -72,7 +73,7 @@ import SellerRoute from '../SellerRoute/SellerRoute';
                 },
                 {
                     path: "/dashboard/myorders",
-                    element:<MyOrders></MyOrders>
+                    element:<BuyerRoute><MyOrders></MyOrders></BuyerRoute>
                 }
             ]
         },
