@@ -26,19 +26,19 @@ const DashBoardLayout = () => {
 
                         {
                             isSeller && <>
-                                <li><Link to={"/dashboard"}>Add A Product</Link></li>
+                                <li><Link to={"/dashboard/addproduct"}>Add A Product</Link></li>
                                 <li><Link to={"/dashboard/myproduct"}>My Products</Link></li>
                             </>
                         }
                         {
                             isAdmin && <>
-                                <li><Link to={"/dashboard"}>All Sellers</Link></li>
+                                <li><Link to={"/dashboard/allsellers"}>All Sellers</Link></li>
                                 <li><Link to={"/dashboard/allbuyers"}>All Buyers</Link></li>
                             </>
                         }
                         {
                             isBuyer && <>
-                            <li><Link to={"/dashboard"}>My orders</Link></li>
+                            <li><Link to={"/dashboard/myorder"}>My orders</Link></li>
                             </>
                         }
 

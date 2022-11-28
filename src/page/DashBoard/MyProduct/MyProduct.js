@@ -1,8 +1,22 @@
 import React from 'react';
+import toast from 'react-hot-toast';
 import { FaMapMarkerAlt } from 'react-icons/fa';
 
-const MyProduct = ({bike}) => {
-    const {picture, name, resalePrice, location, time} = bike
+const MyProduct = ({bike, handleDeleteProduct, refetch}) => {
+    const {_id, picture, name, resalePrice, location, time} = bike
+    
+    const handleAvailable = id => {
+        fetch(`http://localhost:5000/bikes/ads/${id}`, {
+            method: 'PUT',
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.modifiedCount > 0) {
+                    toast.success('verified successful.')
+                    refetch();
+                }
+            })
+    }
     return (
         <div>
             <div className="overflow-x-auto w-full">
@@ -31,10 +45,19 @@ const MyProduct = ({bike}) => {
                                 <span className="badge badge-ghost badge-sm">Post at {time}</span>
                             </td>
                             <th>
-                                <button className="btn btn-primary btn-sm">available</button>
+                                {
+                                    bike.ads ?
+                                    <>
+                                    <p className='font-semibold text-primary'>Advertised</p>
+                                    </>
+                                    :
+                                    <>
+                                    <button onClick={() => handleAvailable(_id)} className="btn btn-primary btn-sm">available</button>
+                                    </>
+                                }
                             </th>
                             <th>
-                                <button className="btn btn-secondary btn-sm">Delete</button>
+                                <button onClick={() => handleDeleteProduct(_id)} className="btn btn-secondary btn-sm">Delete</button>
                             </th>
                         </tr>
                     </tbody>

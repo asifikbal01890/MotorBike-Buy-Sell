@@ -49,7 +49,6 @@ const SignUp = () => {
                 const user = result.user;
                 const role = false;
                 saveUser(user.displayName, user.email, role);
-                console.log(user)
                 toast('Sign Up Successfully');
             })
             .catch(e => setSingUpError(e.message));
@@ -81,7 +80,6 @@ const SignUp = () => {
     const btnToggle = btnState ? 'Seller Mood' : 'Buyer Mood';     
 
     return (
-        <div>
             <div className='flex justify-center items-center h-[900px] '>
                 <div className='shadow-md w-[385px] px-7 rounded-2xl'>
                     <h2 className='text-center text-xl mt-6'>Sign Up</h2>
@@ -130,7 +128,6 @@ const SignUp = () => {
                     <button onClick={handleGoogleLogIn} className="btn btn-outline btn-primary w-full mb-6">CONTINUE WITH GOOGLE</button>
                 </div>
             </div>
-        </div>
     );
 };
 
