@@ -5,13 +5,14 @@ const Ads = () => {
   const { data: bikes = [] } = useQuery({
     queryKey: ['bikes'],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/bikes/ads");
+      const res = await fetch("https://motorbike-buy-sell-server-site.vercel.app/bikes/ads");
       const data = await res.json();
       return data;
     }
   })
   return (
     <div className='mb-8'>
+      <h1 className='mb-6 text-center text-3xl font-bold'>Best Bike In Low Price</h1>
       <div>
         {
           bikes.length < 1 ?

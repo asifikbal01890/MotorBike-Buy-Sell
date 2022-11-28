@@ -8,7 +8,7 @@ import MyProduct from './MyProduct';
 const MyProducts = () => {
     const { user } = useContext(AuthContext);
 
-    const url = `http://localhost:5000/bikes/my?email=${user?.email}`;
+    const url = `https://motorbike-buy-sell-server-site.vercel.app/bikes/my?email=${user?.email}`;
 
     const { data: bikes = [], refetch } = useQuery({
         queryKey: ['bikes', user?.email],
@@ -21,7 +21,7 @@ const MyProducts = () => {
     })
 
     const handleDeleteProduct = id => {
-        fetch(`http://localhost:5000/bikes/my/${id}`, {
+        fetch(`https://motorbike-buy-sell-server-site.vercel.app/bikes/my/${id}`, {
             method: 'DELETE',
         })
             .then(res => res.json())

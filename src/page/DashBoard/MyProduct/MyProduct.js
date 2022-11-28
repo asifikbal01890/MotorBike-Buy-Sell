@@ -6,7 +6,7 @@ const MyProduct = ({bike, handleDeleteProduct, refetch}) => {
     const {_id, picture, name, resalePrice, location, time} = bike
     
     const handleAvailable = id => {
-        fetch(`http://localhost:5000/bikes/ads/${id}`, {
+        fetch(`https://motorbike-buy-sell-server-site.vercel.app/bikes/ads/${id}`, {
             method: 'PUT',
         })
             .then(res => res.json())

@@ -12,7 +12,7 @@ const BikesCollection = () => {
     const {data:bikes = []} = useQuery({
         queryKey: ['bikes', id],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/bikes?id=${id}`);
+            const res = await fetch(`https://motorbike-buy-sell-server-site.vercel.app/bikes?id=${id}`);
             const data = await res.json();
             return data;
         }   

@@ -42,7 +42,7 @@ const AddAProduct = () => {
             condition,
             time
         }
-        fetch('http://localhost:5000/bikes', {
+        fetch('https://motorbike-buy-sell-server-site.vercel.app/bikes', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

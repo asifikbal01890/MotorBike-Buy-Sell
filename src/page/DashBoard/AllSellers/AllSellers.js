@@ -7,14 +7,14 @@ const AllSellers = () => {
     const { data: sellers = [], refetch } = useQuery({
         queryKey: ['sellers'],
         queryFn: async () => {
-            const res = await fetch("http://localhost:5000/users/seller");
+            const res = await fetch("https://motorbike-buy-sell-server-site.vercel.app/users/seller");
             const data = await res.json();
             return data;
         }
     })
 
     const handleVerify = id => {
-        fetch(`http://localhost:5000/users/seller/${id}`, {
+        fetch(`https://motorbike-buy-sell-server-site.vercel.app/users/seller/${id}`, {
             method: 'PUT',
         })
             .then(res => res.json())
@@ -27,7 +27,7 @@ const AllSellers = () => {
     }
 
     const handleDeleteSeller = id => {
-        fetch(`http://localhost:5000/users/${id}`, {
+        fetch(`https://motorbike-buy-sell-server-site.vercel.app/users/${id}`, {
             method: 'DELETE',
         })
             .then(res => res.json())

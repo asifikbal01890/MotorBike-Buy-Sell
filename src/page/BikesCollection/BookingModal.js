@@ -24,7 +24,7 @@ const BookingModal = ({product, setProduct}) => {
             email,
             image: product.picture
         }
-        fetch('http://localhost:5000/bookings', {
+        fetch('https://motorbike-buy-sell-server-site.vercel.app/bookings', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -36,6 +36,7 @@ const BookingModal = ({product, setProduct}) => {
                 console.log(data);
                 if (data.acknowledged) {
                     setProduct(null);
+                    form.reset();
                     toast.success('Booking Confirmed');
                 }
                 else{

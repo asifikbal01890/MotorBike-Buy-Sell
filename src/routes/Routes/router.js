@@ -7,8 +7,10 @@ import Blog from '../../page/Blog/Blog';
 import AddAProduct from '../../page/DashBoard/AddAProduct/AddAProduct';
 import AllBuyers from '../../page/DashBoard/AllBuyers/AllBuyers';
 import AllSellers from '../../page/DashBoard/AllSellers/AllSellers';
+import DashBoard from '../../page/DashBoard/DashBoard';
 import MyOrders from '../../page/DashBoard/MyOrders/MyOrders';
 import MyProducts from '../../page/DashBoard/MyProduct/MyProducts';
+import ReportedItems from '../../page/DashBoard/ReportedItems/ReportedItems';
 import Home from '../../page/Home/Home/Home';
 import Login from '../../page/LogIn/Login';
 import PageNotFound from '../../page/PageNotFound/PageNotFound';
@@ -45,7 +47,7 @@ import SellerRoute from '../SellerRoute/SellerRoute';
                 },
                 {
                     path: "/categories/:id",
-                    loader: ({params}) => fetch(`http://localhost:5000/categories/${params.id}`),
+                    loader: ({params}) => fetch(`https://motorbike-buy-sell-server-site.vercel.app/categories/${params.id}`),
                     element:<PrivateRoute><BikesCollection></BikesCollection></PrivateRoute>
                 }
             ]
@@ -55,8 +57,12 @@ import SellerRoute from '../SellerRoute/SellerRoute';
             element: <PrivateRoute><DashBoardLayout></DashBoardLayout></PrivateRoute>,
             children:[
                 {
+                    path: "/dashboard",
+                    element:<DashBoard></DashBoard>
+                },
+                {
                     path: "/dashboard/addproduct",
-                    loader: () => fetch("http://localhost:5000/categories"),
+                    loader: () => fetch("https://motorbike-buy-sell-server-site.vercel.app/categories"),
                     element:<SellerRoute><AddAProduct></AddAProduct></SellerRoute>
                 },
                 {
@@ -70,6 +76,10 @@ import SellerRoute from '../SellerRoute/SellerRoute';
                 {
                     path: "/dashboard/allbuyers",
                     element:<AdminRoute><AllBuyers></AllBuyers></AdminRoute>
+                },
+                {
+                    path: "/dashboard/reporteditems",
+                    element:<AdminRoute><ReportedItems></ReportedItems></AdminRoute>
                 },
                 {
                     path: "/dashboard/myorder",

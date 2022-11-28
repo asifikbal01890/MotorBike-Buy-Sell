@@ -10,24 +10,25 @@ const Footer = () => {
                 <p>ACME Industries Ltd.<br />Providing reliable tech since 1992</p>
             </div>
             <div>
-                <span className="footer-title">Services</span>
-                <Link className="link link-hover">Branding</Link>
-                <Link className="link link-hover">Design</Link>
-                <Link className="link link-hover">Marketing</Link>
-                <Link className="link link-hover">Advertisement</Link>
+                <span className="footer-title">More from Motorcycle</span>
+                <Link className="link link-hover">Sell Fast</Link>
+                <Link className="link link-hover">Membership</Link>
+                <Link className="link link-hover">Banner Ads</Link>
+                <Link className="link link-hover">Ad Promotions</Link>
+                <Link className="link link-hover">BikesGuide</Link>
             </div>
             <div>
-                <span className="footer-title">Company</span>
-                <Link className="link link-hover">About us</Link>
-                <Link className="link link-hover">Contact</Link>
-                <Link className="link link-hover">Jobs</Link>
-                <Link className="link link-hover">Press kit</Link>
+                <span className="footer-title">Help & Support</span>
+                <Link className="link link-hover">FAQ</Link>
+                <Link className="link link-hover">Stay safe</Link>
+                <Link className="link link-hover">Contact Us</Link>
             </div>
             <div>
-                <span className="footer-title">Legal</span>
-                <Link className="link link-hover">Terms of use</Link>
+                <span className="footer-title">About Motorcycle</span>
+                <Link className="link link-hover">About Us</Link>
+                <Link className="link link-hover">Careers</Link>
+                <Link className="link link-hover">Terms and Conditions</Link>
                 <Link className="link link-hover">Privacy policy</Link>
-                <Link className="link link-hover">Cookie policy</Link>
             </div>
         </div>
             <div className="footer items-center justify-center p-4 bg-accent text-white">

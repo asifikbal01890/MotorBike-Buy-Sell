@@ -56,7 +56,7 @@ const SignUp = () => {
 
     const saveUser = (name, email, role) => {
         const user = { name, email, role };
-        fetch('http://localhost:5000/users', {
+        fetch('https://motorbike-buy-sell-server-site.vercel.app/users', {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
