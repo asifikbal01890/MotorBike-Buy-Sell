@@ -1,8 +1,9 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const MyOrder = ({book}) => {
     console.log(book)
-    const {image, itemName, price} = book
+    const {_id, image, itemName, price} = book
     return (
 
         <tr>
@@ -20,7 +21,7 @@ const MyOrder = ({book}) => {
                 </div>
             </td>
             <th>
-                <button className="btn btn-primary btn-sm">pay</button>
+                <Link to={`/dashboard/myorder/${_id}`}><button className="btn btn-primary btn-sm">pay</button></Link>
             </th>
         </tr>
 

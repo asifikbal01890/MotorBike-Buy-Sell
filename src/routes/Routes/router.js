@@ -10,6 +10,7 @@ import AllSellers from '../../page/DashBoard/AllSellers/AllSellers';
 import DashBoard from '../../page/DashBoard/DashBoard';
 import MyOrders from '../../page/DashBoard/MyOrders/MyOrders';
 import MyProducts from '../../page/DashBoard/MyProduct/MyProducts';
+import Payment from '../../page/DashBoard/Payment/Payment';
 import ReportedItems from '../../page/DashBoard/ReportedItems/ReportedItems';
 import Home from '../../page/Home/Home/Home';
 import Login from '../../page/LogIn/Login';
@@ -84,6 +85,11 @@ import SellerRoute from '../SellerRoute/SellerRoute';
                 {
                     path: "/dashboard/myorder",
                     element:<BuyerRoute><MyOrders></MyOrders></BuyerRoute>
+                },
+                {
+                    path: "/dashboard/myorder/:id",
+                    loader: ({params}) => fetch(`http://localhost:5000/bookings/${params.id}`),
+                    element:<BuyerRoute><Payment></Payment></BuyerRoute>
                 }
             ]
         },
