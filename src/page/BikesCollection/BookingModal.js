@@ -22,9 +22,10 @@ const BookingModal = ({product, setProduct}) => {
             phone,
             location,
             email,
+            paid: false,
             image: product.picture
         }
-        fetch('https://motorbike-buy-sell-server-site.vercel.app/bookings', {
+        fetch('http://localhost:5000/bookings', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -43,7 +44,7 @@ const BookingModal = ({product, setProduct}) => {
                     toast.error(data.message);
                 }
             })
-    }
+        }
 
     return (
         <div>

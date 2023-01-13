@@ -26,8 +26,8 @@ const BikeCollection = ({ bike, setProduct }) => {
                         </div>
                         <p className="py-3">{description}</p>
                         <div className='flex items-center justify-between font-semibold'>
-                            <p className=''>Original Price: {originalPrice} BDT</p>
-                            <p>Resale Price: {resalePrice} BDT</p>
+                            <p className=''>Original Price: {new Intl.NumberFormat('en-IN', { maximumSignificantDigits: 3 }).format(originalPrice)} BDT</p>
+                            <p>Resale Price: {new Intl.NumberFormat('en-IN', { maximumSignificantDigits: 3 }).format(resalePrice)} BDT</p>
                         </div>
                         <div className='flex justify-center lg:justify-start'>
                         <label htmlFor="booking-modal" className="btn btn-primary flex" onClick={ () => setProduct(bike)}>Book Now</label>

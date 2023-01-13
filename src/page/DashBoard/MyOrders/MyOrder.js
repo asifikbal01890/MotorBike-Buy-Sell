@@ -1,9 +1,17 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 const MyOrder = ({book}) => {
-    console.log(book)
-    const {_id, image, itemName, price} = book
+
+    const {_id, image, itemName, price, paid} = book
+    
+    const handlePayButton= id =>{
+        fetch(`http://localhost:5000/bookings/payment/${id}`, {
+        })
+            .then(res => res.json())
+            .then(data => {
+                window.location.replace(data.url);
+            })
+    } 
     return (
 
         <tr>
@@ -16,12 +24,20 @@ const MyOrder = ({book}) => {
                     </div>
                     <div>
                         <div className="font-bold">{itemName}</div>
-                        <div className="text-sm opacity-50">Price: {price} BDT</div>
+                        <div className="text-sm opacity-50">Price: {new Intl.NumberFormat('en-IN', { maximumSignificantDigits: 3 }).format(price)} BDT</div>
                     </div>
                 </div>
             </td>
             <th>
-                <Link to={`/dashboard/myorder/${_id}`}><button className="btn btn-primary btn-sm">pay</button></Link>
+                {
+                    paid?<>
+                    <p className="text-green-500">Paid</p>
+                    </>
+                    :
+                    <>        
+                    <button onClick={()=>handlePayButton(_id)} className="btn btn-primary btn-sm">pay</button>
+                    </>
+                }
             </th>
         </tr>
 
